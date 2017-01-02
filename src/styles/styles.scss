@@ -1,0 +1,83 @@
+@import "./components/bootstrap.scss";
+
+@import "spinners/5-pulse.scss";
+@import "spinners/10-fading-circle.scss";
+
+@import "./components/mixins/responsive-margin.scss";
+
+@import "./components/lightbox.scss";
+@import "./components/radio-group.scss";
+
+.light>.sk-fading-circle>.sk-circle:before {
+    background-color: white;
+}
+
+.btn pulse {
+    display: inline-block;
+    .sk-spinner-pulse {
+        width: 20px;
+        height: 20px;
+        margin-top: -5px;
+        margin-bottom: -5px;
+    }
+}
+
+body {
+    padding-bottom: 200px;
+    background-color: #334;
+}
+
+.container-fluid {
+    max-width: $screen-lg;
+}
+
+.padding {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.margin {
+    margin: 15px;
+}
+
+textarea {
+    min-height: 200px;
+    resize: vertical;
+}
+
+.navigation {
+    background-color: #222;
+    height: 50px;
+    border-bottom: 1px solid black;
+
+    a {
+        float: left;
+        height: 50px;
+        padding: 15px 15px;
+        font-size: 18px;
+        line-height: 20px;
+
+        color: #9d9d9d;
+        
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+
+.list-group {
+    @include responsive-margin();
+}
+
+.panel {
+    @include responsive-margin();
+}
+
+@media (max-width: $screen-xs-max) {
+    .navigation {
+        margin-bottom: 0px;
+    }
+    .panel {
+        margin-bottom: 0px;
+    }
+}

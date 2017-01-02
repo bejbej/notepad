@@ -1,0 +1,31 @@
+<div ng-controller="NoteController as vm">
+    <spinner class="light" ng-if="!vm.note"></spinner>
+
+    <div class="panel panel-default" ng-if="vm.note">
+        <div class="panel-heading form-inline">
+            <div ng-if="!vm.isEditing">
+                <button class="btn btn-default" ng-click="vm.startEditing()">Edit</button>
+                <button class="btn btn-default" ng-click="vm.save()" ng-if="!vm.note.id" ng-disabled="vm.isSaving">
+                    {{ vm.isSaving ? "Syncing" : "Sync to Cloud" }}
+                    <pulse ng-if="vm.isSaving"></pulse>
+                </button>
+                <button class="btn btn-default" ng-click="vm.delete()" ng-if="vm.note.id" ng-disabled="vm.isDeleting">
+                    {{ vm.isDeleting ? "Removing" : "Remove from Cloud" }}
+                    <pulse ng-if="vm.isDeleting"></pulse>
+                </button>
+            </div>
+            <div ng-if="vm.isEditing">
+                <button class="btn btn-default" ng-click="vm.applyChanges()">Apply Changes</button>
+                <button class="btn btn-default" ng-click="vm.discardChanges()">Discard Changes</button>
+            </div>
+        </div>
+        <form class="margin" ng-if="vm.isEditing">
+            <div class="form-group">
+                <textarea class="form-control" ng-model="vm.noteInput" ng-model-options="{updateOn: 'blur'}"></textarea>
+            </div>
+            <button class="btn btn-default" type="button" ng-click="vm.applyChanges()">Apply Changes</button>
+            <button class="btn btn-default" type="button" ng-click="vm.discardChanges()">Discard Changes</button>
+        </form>
+        <div class="margin" btf-markdown="vm.note.text" ng-if="!vm.isEditing"></div>
+    </div>
+</div>
