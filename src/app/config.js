@@ -1,3 +1,3 @@
 ﻿var appConfig = {
-    notesUrl: "http://notepad-api.herokuapp.com/api/notes"
+    notesUrl: "https://notepad-api.herokuapp.com/api/notes"
 };

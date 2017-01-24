@@ -11,7 +11,7 @@ gulp.task('clean', function(done) {
     $.del(config.dist.root, done);
 });
 
-gulp.task('link', ['index', 'fonts', 'css', 'lib', 'config', 'app'], function() {
+gulp.task('link', ['index', 'fonts', 'images', 'css', 'lib', 'config', 'app'], function() {
     return gulp
         .src(config.dist.indexFile)
         .pipe($.inject(gulp.src(config.dist.cssFiles), {relative: true, removeTags: true}))
@@ -28,6 +28,11 @@ gulp.task('index', function() {
 gulp.task('fonts', function() {
     return gulp.src(config.src.fonts)
         .pipe(gulp.dest(config.dist.fonts));
+});
+
+gulp.task('images', function() {
+    return gulp.src(config.src.images)
+        .pipe(gulp.dest(config.dist.images));
 });
 
 gulp.task('css', function() {

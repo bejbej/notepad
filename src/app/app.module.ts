@@ -3,6 +3,7 @@
         'templates',
         'ngRoute',
         'ngLocationUpdate',
-        'btford.markdown'
+        'btford.markdown',
+        'monospaced.elastic'
     ]);
 }

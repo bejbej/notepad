@@ -2,6 +2,7 @@
         this.dist = {
             root: "./dist",
             fonts: "./dist/fonts",
+            images: "./dist/images",
             scripts: "./dist/scripts",
             styles: "./dist/styles",
             indexFile: "./dist/index.html",
@@ -14,9 +15,8 @@
         };
         this.src = {
             config: "./src/app/config.js",
-            fonts: [
-                "./bower_components/bootstrap-sass/assets/fonts/bootstrap/*.*"
-            ],
+            fonts: [],
+            images: "./src/images/*.*",
             index: "./src/index.html",
             templates: [
                 './src/app/**/*.html',

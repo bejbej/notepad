@@ -8,9 +8,9 @@ module app {
 
         public note: Note;
         public noteInput: string;
-        public isEditing: boolean;
         public isSaving: boolean;
         public isDeleting: boolean;
+        public view: string = "md";
 
         constructor(
             $routeParams: IRouteParams,
@@ -20,28 +20,12 @@ module app {
 
             if ($routeParams.id === "new") {
                 this.note = this.createNewNote();
+                this.view = "edit";
             } else {
                 this.NoteService.getById($routeParams.id).then(note => {
                     this.note = note;
                 });
             }
-        }
-
-        private startEditing = () => {
-            this.noteInput = this.note.text;
-            this.isEditing = true;
-        }
-
-        private applyChanges = () => {
-            this.note.text = this.noteInput;
-            if (this.note.id) {
-                this.note.save();
-            }
-            this.isEditing = false;
-        }
-
-        private discardChanges = () => {
-            this.isEditing = false;
         }
 
         private save = () => {
@@ -58,14 +42,14 @@ module app {
                 this.isDeleting = true;
                 this.note.delete().finally(() => {
                     this.isDeleting = false;
-                    this.$location.update_path("/decks/new");
+                    location.hash = "/notes";
                 });
             }
         }
 
         private createNewNote = () => {
             var note = this.NoteFactory.createNote();
-            note.text = "# New Note";
+            note.text = "";
             return note;
         }
     }
