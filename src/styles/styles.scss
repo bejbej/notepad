@@ -3,7 +3,7 @@
 @import "spinners/5-pulse.scss";
 @import "spinners/10-fading-circle.scss";
 
-@import "./components/mixins/responsive-margin.scss";
+@import "./components/mixins/animation.scss";
 
 @import "./components/tabs.scss";
 
@@ -22,7 +22,7 @@
 }
 
 body {
-    background-color: #222;
+    background-color: #4B334B;
     background-image: url("../images/bg.png");
 }
 
@@ -34,18 +34,37 @@ a {
     max-width: $screen-lg;
 }
 
-.padding {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
 .margin {
     margin: 15px;
 }
 
-textarea {
+.margin-h {
+    @include animate();
+    @media (max-width: $screen-sm-max) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    @media (min-width: $screen-md-min) {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+.margin-v {
+    @include animate();
+    @media (max-width: $screen-sm-max) {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    @media (min-width: $screen-md-min) {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+textarea, [btf-markdown] {
     min-height: 200px;
-    resize: vertical;
+    resize: none;
 }
 
 .navigation {
@@ -66,16 +85,4 @@ textarea {
             background-color:rgba(0,0,0,0.3);
         }
     }
-}
-
-.list-group {
-    @include responsive-margin();
-}
-
-.panel {
-    @include responsive-margin();
-}
-
-[btf-markdown] {
-    min-height: 200px;
 }

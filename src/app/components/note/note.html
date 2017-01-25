@@ -1,7 +1,7 @@
 <div ng-controller="NoteController as vm">
     <spinner class="light" ng-if="!vm.note"></spinner>
 
-    <div class="panel panel-default" ng-if="vm.note">
+    <div class="panel panel-default margin-v margin-h" ng-if="vm.note">
         <ul class="nav nav-tabs">
             <li ng-class="{ 'active': vm.view == 'md' }"><a ng-click="vm.view='md'">view</a></li>
             <li ng-class="{ 'active': vm.view == 'edit' }"><a ng-click="vm.view='edit'">edit</a></li>
