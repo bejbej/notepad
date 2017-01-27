@@ -40,17 +40,16 @@ module app {
             var r = confirm("Are you sure you want to remove this note from the cloud?");
             if (r) {
                 this.isDeleting = true;
-                this.note.delete().finally(() => {
-                    this.isDeleting = false;
+                this.note.delete().then(() => {
                     location.hash = "/notes";
+                }).finally(() => {
+                    this.isDeleting = false;
                 });
             }
         }
 
         private createNewNote = () => {
-            var note = this.NoteFactory.createNote();
-            note.text = "";
-            return note;
+            return this.NoteFactory.createNote();
         }
     }
 

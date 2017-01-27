@@ -9,26 +9,21 @@ module app {
         }
 
         save = (): ng.IPromise<any> => {
-            var deferred = this.$q.defer();
             if (this.id) {
-                this.NoteService.put(this).then(deferred.resolve, deferred.reject);
+                return this.NoteService.put(this);
             } else {
-                this.NoteService.post(this).then(id => {
+                return this.NoteService.post(this).then(id => {
                     this.id = id;
-                    deferred.resolve();
-                }, deferred.reject);
+                });
             }
-            return deferred.promise;
         }
 
         delete = (): ng.IPromise<any> => {
-            var deferred = this.$q.defer();
             if (this.id) {
-                this.NoteService.delete(this.id).then(deferred.resolve, deferred.reject);
+                return this.NoteService.delete(this.id);
             } else {
-                deferred.reject();
+                return this.$q.reject();
             }
-            return deferred.promise;
         }
     }
 }

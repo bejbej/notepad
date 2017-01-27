@@ -3,60 +3,34 @@ module app {
 
         constructor(
             private $http: ng.IHttpService,
-            private $q: ng.IQService,
             private config: IConfig,
             private NoteFactory: NoteFactory) {
         }
 
         getById = (id: string): ng.IPromise<Note> => {
-            var deferred = this.$q.defer();
-            this.$http.get<IApiNote>(this.config.notesUrl + "/" + id).then(response => {
-                deferred.resolve(this.mapApiDeck(response.data));
-            }, response => {
-                deferred.reject(response.status);
+            return this.$http.get<IApiNote>(this.config.notesUrl + "/" + id).then(response => {
+                return this.mapApiDeck(response.data);
             });
-            return deferred.promise;
         }
 
         getByQuery = (): ng.IPromise<INoteQueryResult[]> => {
-            var deferred = this.$q.defer();
-            this.$http.get<INoteQueryResults>(this.config.notesUrl).then(response => {
-                return deferred.resolve(response.data.results);
-            }, response => {
-                return deferred.reject(response.status);
+            return this.$http.get<INoteQueryResults>(this.config.notesUrl).then(response => {
+                return response.data.results;
             })
-            return deferred.promise;
         }
 
         post = (note: Note): ng.IPromise<string> => {
-            var deferred = this.$q.defer();
-            this.$http.post<{id:string}>(this.config.notesUrl, note).then(response => {
-                deferred.resolve(response.data.id);
-            }, response => {
-                deferred.reject(response.status);
+            return this.$http.post<{id:string}>(this.config.notesUrl, note).then(response => {
+                return response.data.id;
             });
-            return deferred.promise;
         }
 
         put = (note: Note): ng.IPromise<any> => {
-            var deferred = this.$q.defer();
-            this.$http.put(this.config.notesUrl + "/" + note.id, note).then(response => {
-                deferred.resolve();
-            }, response => {
-                deferred.reject();
-            });
-            return deferred.promise;
+            return this.$http.put(this.config.notesUrl + "/" + note.id, note);
         }
 
         delete = (id: string): ng.IPromise<any> => {
-            var deferred = this.$q.defer();
-            this.$http.delete(this.config.notesUrl + "/" + id).then(response => {
-                deferred.resolve();
-            }, response => {
-                deferred.reject(response.status);
-            })
-            return deferred.promise;
-            
+            return this.$http.delete(this.config.notesUrl + "/" + id);
         }
 
         private mapApiDeck = (apiNote: IApiNote): Note => {
