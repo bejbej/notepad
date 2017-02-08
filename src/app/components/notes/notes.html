@@ -1,9 +1,9 @@
 <div ng-controller="NotesController as vm">
-    <div class="list-group margin-v margin-h">
+    <div class="list-group">
         <a class="list-group-item" href="#/notes/new"><strong>+</strong> Create a New Note</a>
     </div>
     <spinner class="light" ng-if="!vm.notes"></spinner>
-    <div class="list-group margin-v margin-h">
+    <div class="list-group">
         <a class="list-group-item" href="#/notes/{{::note.id}}" ng-repeat="note in ::vm.notes">{{::note.preview}}</a>
     </div>
 </div>

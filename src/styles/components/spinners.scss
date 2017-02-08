@@ -1,0 +1,16 @@
+@import "spinners/5-pulse.scss";
+@import "spinners/10-fading-circle.scss";
+
+.light>.sk-fading-circle>.sk-circle:before {
+    background-color: white;
+}
+
+.btn pulse {
+    display: inline-block;
+    .sk-spinner-pulse {
+        width: 20px;
+        height: 20px;
+        margin-top: -5px;
+        margin-bottom: -5px;
+    }
+}

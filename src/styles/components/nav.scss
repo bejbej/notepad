@@ -1,0 +1,31 @@
+nav {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $screen-lg;
+
+    @include clearfix;
+    @include animate();
+    @media (min-width: $screen-md-min) {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    a, button {
+        float: left;
+        height: 50px;
+        padding: 15px 15px;
+        font-size: 18px;
+        line-height: 20px;
+
+        border: 0;
+        outline: none;
+        color: #f5f5f5;
+        background-color: transparent;
+        
+        &:hover, &:active, &:focus {
+            color: #fff;
+            background-color: rgba(0,0,0,0.3);
+            text-decoration: none;
+        }
+    }
+}

@@ -2,10 +2,10 @@ $screen-xs: 0px;
 $screen-sm: 480px;
 $screen-md: 768px;
 $screen-lg: 992px;
-$panel-border-radius: 0px;
 $grid-gutter-width: 0px;
 $list-group-border-radius: 0px;
 $icon-font-path: "../fonts/";
+$text-color: #333;
 
 // Core variables and mixins
 @import "bootstrap/mixins";
@@ -20,7 +20,7 @@ $icon-font-path: "../fonts/";
 @import "bootstrap/scaffolding";
 @import "bootstrap/type";
 //@import "bootstrap/code";
-@import "bootstrap/grid";
+//@import "bootstrap/grid";
 //@import "bootstrap/tables";
 @import "bootstrap/forms";
 @import "bootstrap/buttons";
@@ -43,7 +43,7 @@ $icon-font-path: "../fonts/";
 //@import "bootstrap/progress-bars";
 //@import "bootstrap/media";
 @import "bootstrap/list-group";
-@import "bootstrap/panels";
+//@import "bootstrap/panels";
 //@import "bootstrap/responsive-embed";
 //@import "bootstrap/wells";
 //@import "bootstrap/close";
@@ -55,5 +55,5 @@ $icon-font-path: "../fonts/";
 //@import "bootstrap/carousel";
 
 // Utility classes
-@import "bootstrap/utilities";
+//@import "bootstrap/utilities";
 //@import "bootstrap/responsive-utilities";
