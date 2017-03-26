@@ -6,8 +6,10 @@
 
 // Components
 @import "./components/header.scss";
+@import "./components/list-group.scss";
 @import "./components/nav.scss";
 @import "./components/section.scss";
+@import "./components/select.scss";
 @import "./components/spinners.scss";
 @import "./components/tabs.scss";
 @import "./components/tag-select.scss";
@@ -36,7 +38,7 @@ textarea, [btf-markdown] {
     margin: 15px;
 }
 
-.list-group {
+.margin-collapse {
     @include animate();
     @media (max-width: $screen-sm-max) {
         margin: 0;
@@ -44,8 +46,4 @@ textarea, [btf-markdown] {
     @media (min-width: $screen-md-min) {
         margin: 15px;
     }
-}
-
-.margin {
-    margin: 15px;
 }
