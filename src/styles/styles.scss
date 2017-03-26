@@ -47,3 +47,12 @@ textarea, [btf-markdown] {
         margin: 15px;
     }
 }
+
+.flex {
+    @media (max-width: $screen-xs-max) {
+        display: flex;
+        &>li {
+            flex: 1;
+        }
+    }
+}

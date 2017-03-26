@@ -2,7 +2,7 @@
     <spinner class="light" ng-if="!vm.note"></spinner>
 
     <section ng-if="vm.note">
-        <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs flex">
             <li ng-class="{ 'active': vm.view == 'md' }"><a ng-click="vm.view='md'">view</a></li>
             <li ng-class="{ 'active': vm.view == 'edit' }"><a ng-click="vm.view='edit'">edit</a></li>
         </ul>
