@@ -16,7 +16,7 @@ module app {
         getByQuery = (): ng.IPromise<INoteQueryResult[]> => {
             return this.$http.get<INoteQueryResults>(this.config.notesUrl).then(response => {
                 return response.data.results;
-            })
+            });
         }
 
         post = (note: Note): ng.IPromise<string> => {

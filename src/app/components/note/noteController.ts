@@ -14,12 +14,12 @@ module app {
 
         constructor(
             $routeParams: IRouteParams,
+            NoteFactory: NoteFactory,
             private $location: any,
-            private NoteService: NoteService,
-            private NoteFactory: NoteFactory) {
+            private NoteService: NoteService) {
 
             if ($routeParams.id === "new") {
-                this.note = this.createNewNote();
+                this.note = NoteFactory.createNote();
                 this.view = "edit";
             } else {
                 this.NoteService.getById($routeParams.id).then(note => {
@@ -46,10 +46,6 @@ module app {
                     this.isDeleting = false;
                 });
             }
-        }
-
-        private createNewNote = () => {
-            return this.NoteFactory.createNote();
         }
     }
 
