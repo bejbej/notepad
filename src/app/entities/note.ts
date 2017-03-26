@@ -2,6 +2,7 @@ module app {
     export class Note {
         id: string;
         text: string;
+        tags: string[];
 
         constructor(
             private $q: ng.IQService,

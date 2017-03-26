@@ -3,7 +3,14 @@
         <a class="list-group-item" href="#/notes/new"><strong>+</strong> Create a New Note</a>
     </div>
     <spinner class="light" ng-if="!vm.notes"></spinner>
-    <div class="list-group">
-        <a class="list-group-item" href="#/notes/{{::note.id}}" ng-repeat="note in ::vm.notes">{{::note.preview}}</a>
+    <div class="list-group" ng-if="vm.notes">
+        <select class="tag-select"
+                ng-model="::vm.currentFilter"
+                ng-options="tag as tag for tag in ::vm.tags"
+                ng-change="::vm.filterNotes()"
+                ng-if="::vm.tags.length > 0">
+            <option value="">- All -</option>
+        </select>
+        <a class="list-group-item" href="#/notes/{{::note.id}}" ng-repeat="note in vm.visibleNotes">{{::note.preview}} <span class="badge" ng-repeat="tag in ::note.tags">{{::tag}}</span></a>
     </div>
 </div>

@@ -7,21 +7,36 @@
             <li ng-class="{ 'active': vm.view == 'edit' }"><a ng-click="vm.view='edit'">edit</a></li>
         </ul>
 
-        <div class="margin" btf-markdown="vm.note.text" ng-if="vm.view == 'md'"></div>
+        <div ng-if="vm.view == 'md'">
+            <div class="margin">
+                <span class="badge" ng-repeat="tag in vm.note.tags">{{::tag}}</span>
+            </div>
+            <div class="margin" btf-markdown="::vm.note.text" ></div>
+        </div>
+
         <form ng-if="vm.view == 'edit'">
+
             <div class="margin">
                 <button class="btn btn-default"
-                        ng-click="vm.delete()"
+                        ng-click="::vm.delete()"
                         ng-disabled="!vm.note.id">
                         <span ng-if="!vm.isDeleting">Delete this Note</span>
                         <span ng-if="vm.isDeleting">Deleting <pulse></pulse></span>
                     </button>
             </div>
             <div class="margin form-group">
+                <input class="form-control"
+                       placeholder="tags"
+                       ng-model="::vm.note.tags"
+                       ng-model-options="::{updateOn: 'default blur', debounce: { default: 4000, blur: 0 }}"
+                       ng-list
+                       ng-change="::vm.save()"/> 
+            </div>
+            <div class="margin form-group">
                 <textarea class="form-control"
-                          ng-model="vm.note.text"
-                          ng-model-options="{updateOn: 'default blur', debounce: { default: 4000, blur: 0 }}"
-                          ng-change="vm.save()"
+                          ng-model="::vm.note.text"
+                          ng-model-options="::{updateOn: 'default blur', debounce: { default: 4000, blur: 0 }}"
+                          ng-change="::vm.save()"
                           msd-elastic></textarea>
             </div>
         </form>

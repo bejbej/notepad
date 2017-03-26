@@ -11,6 +11,7 @@ module app {
             if (data) {
                 note.id = data.id;
                 note.text = data.text;
+                note.tags = data.tags;
             }
             return note;
         }
