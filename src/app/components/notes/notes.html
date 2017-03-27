@@ -1,18 +1,22 @@
 <div ng-controller="NotesController as vm">
-    <div class="margin-collapse" style="margin-top:0;">
+    <nav>
         <div class="select">
             <div class="select-label">{{vm.currentFilter || "All"}} <span class="chevron bottom"></span></div>
             <select ng-model="::vm.currentFilter"
                     ng-options="tag as tag for tag in ::vm.tags"
                     ng-change="::vm.filterNotes()"
                     ng-if="vm.tags.length > 0">
-            <option value="">- All -</option>
-        </select>
+                <option value="">- All -</option>
+            </select>
         </div>
-        <div class="list-group">
-            <a class="list-group-item" href="#/notes/new"><strong>+</strong> Create a New Note</a>
-            <a class="list-group-item" href="#/notes/{{::note.id}}" ng-repeat="note in vm.visibleNotes">{{::note.preview}} <span class="badge" ng-repeat="tag in ::note.tags">{{::tag}}</span></a>
-        </div>
+    </nav>
+
+    <div class="margin-collapse list-group">
+        <a class="list-group-item" href="#/notes/new"><strong>+</strong> Create a New Note</a>
+    </div>
+
+    <div class="margin-collapse list-group">
+        <a class="list-group-item" href="#/notes/{{::note.id}}" ng-repeat="note in vm.visibleNotes">{{::note.preview}} <span class="badge" ng-repeat="tag in ::note.tags">{{::tag}}</span></a>
     </div>
     <spinner class="light" ng-if="!vm.notes"></spinner>
 </div>

@@ -1,4 +1,8 @@
 <div ng-controller="NoteController as vm">
+    <nav>
+        <a href="#/notes">My Notes</a>
+    </nav>
+
     <spinner class="light" ng-if="!vm.note"></spinner>
 
     <section ng-if="vm.note">

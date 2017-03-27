@@ -14,3 +14,9 @@
         }
     }
 }
+
+@media (max-width: $screen-sm-max) {
+    .list-group+.list-group>.list-group-item:first-child {
+        border-top: 2px solid #ddd !important;
+    }
+}

@@ -3,10 +3,6 @@
     position: relative;
     min-width: 100px;
 
-    @media (max-width: $screen-xs-max) {
-        width: 100%;
-    }
-
     &:hover .select-label {
         color: #fff;
         background-color: rgba(0,0,0,0.3);
@@ -17,8 +13,7 @@
         padding: 15px;
         color: white;
         font-size: 18px;
-
-
+        line-height: 20px;
     }
 
     select {
