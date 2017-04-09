@@ -6,10 +6,20 @@ module app {
         private visibleNotes: INoteQueryResult[];
         private tags: string[];
         private currentFilter: string;
-        private defaultFilterKey = "defaultFilter";
+        private tagsKey = "tags";
 
-        constructor(NoteService: NoteService) {
-            NoteService.getByQuery().then(notes => {
+        constructor(private NoteService: NoteService) {
+            this.getNotes();
+
+            var tags = <ITags>JSON.parse(localStorage.getItem(this.tagsKey));
+            if (tags) {
+                this.tags = tags.all;
+                this.currentFilter = tags.current;
+            }
+        }
+
+        getNotes = () => {
+            this.NoteService.getByQuery().then(notes => {
                 this.notes = notes.sort((a, b) => {
                     return a.preview > b.preview ? 1 : -1;
                 });
@@ -24,27 +34,39 @@ module app {
                     return tags;
                 }, []);
 
-                var defaultFilter = localStorage.getItem(this.defaultFilterKey);
-                if (defaultFilter && this.tags.indexOf(defaultFilter) > -1 ) {
-                    this.currentFilter = defaultFilter;
+                if (this.tags.indexOf(this.currentFilter) < 0) {
+                    delete this.currentFilter;
                 }
+
+                this.storeTags();
                 this.filterNotes();
             });
-
         }
 
         filterNotes = () => {
+            this.storeTags();
+            
             if (!this.currentFilter) {
-                localStorage.removeItem(this.defaultFilterKey);
                 this.visibleNotes = this.notes;
                 return;
             }
-            localStorage.setItem(this.defaultFilterKey, this.currentFilter);
+
             this.visibleNotes = this.notes.filter(note => {
                 return note.tags.some(tag => {
                     return tag.toLocaleLowerCase() === this.currentFilter.toLocaleLowerCase();
                 });
             });
+        }
+
+        storeTags = () => {
+            if (this.tags === undefined) {
+                localStorage.removeItem(this.tagsKey);
+            }
+            var tags: ITags = {
+                all: this.tags,
+                current: this.currentFilter
+            };
+            localStorage.setItem(this.tagsKey, JSON.stringify(tags));
         }
     }
 
