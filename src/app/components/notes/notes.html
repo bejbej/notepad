@@ -10,12 +10,8 @@
             </select>
         </div>
     </nav>
-
-    <div class="margin-collapse list-group">
+    <div class="list-group">
         <a class="list-group-item" href="#/notes/new"><strong>+</strong> Create a New Note</a>
-    </div>
-
-    <div class="margin-collapse list-group">
         <a class="list-group-item" href="#/notes/{{::note.id}}" ng-repeat="note in vm.visibleNotes">{{::note.preview}} <span class="badge" ng-repeat="tag in ::note.tags">{{::tag}}</span></a>
     </div>
     <spinner class="light" ng-if="!vm.notes"></spinner>

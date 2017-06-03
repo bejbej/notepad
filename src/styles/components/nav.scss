@@ -1,14 +1,5 @@
 nav {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: $screen-lg;
-
     @include clearfix;
-    @include animate();
-    @media (min-width: $screen-md-min) {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
 
     a, button {
         float: left;
