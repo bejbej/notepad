@@ -1,48 +1,47 @@
-<div ng-controller="NoteController as vm">
+<main>
     <nav>
-        <a href="#/notes">My Notes</a>
+        <a routerLink="/notes">My Notes</a>
+        <div class="pull-right">
+            <app-auth></app-auth>
+        </div>
     </nav>
 
-    <spinner class="light" ng-if="!vm.note"></spinner>
+    <app-large-spinner *ngIf="isLoading"></app-large-spinner>
 
-    <section ng-if="vm.note">
-        <ul class="nav nav-tabs flex">
-            <li ng-class="{ 'active': vm.view == 'md' }"><a ng-click="vm.view='md'">view</a></li>
-            <li ng-class="{ 'active': vm.view == 'edit' }"><a ng-click="vm.view='edit'">edit</a></li>
-        </ul>
-
-        <div ng-if="vm.view == 'md'">
-            <div class="margin">
-                <span class="badge" ng-repeat="tag in vm.note.tags">{{::tag}}</span>
-            </div>
-            <div class="margin" btf-markdown="::vm.note.text" ></div>
+    <section *ngIf="note && !isEditing">
+        <header class="flex padding-h">
+            <span class="tab">View</span>
+            <button class="header-button" (click)="isEditing = !isEditing">Edit</button>
+        </header>
+        <div class="margin">
+            <span class="badge" *ngFor="let tag of note.tags">{{tag}}</span>
         </div>
-
-        <form ng-if="vm.view == 'edit'">
-
-            <div class="margin">
-                <button class="btn btn-default"
-                        ng-click="::vm.delete()"
-                        ng-disabled="!vm.note.id">
-                        <span ng-if="!vm.isDeleting">Delete this Note</span>
-                        <span ng-if="vm.isDeleting">Deleting <pulse></pulse></span>
-                    </button>
-            </div>
-            <div class="margin form-group">
-                <input class="form-control"
-                       placeholder="tags"
-                       ng-model="::vm.note.tags"
-                       ng-model-options="::{updateOn: 'default blur', debounce: { default: 4000, blur: 0 }}"
-                       ng-list
-                       ng-change="::vm.save()"/> 
-            </div>
-            <div class="margin form-group">
-                <textarea class="form-control"
-                          ng-model="::vm.note.text"
-                          ng-model-options="::{updateOn: 'default blur', debounce: { default: 4000, blur: 0 }}"
-                          ng-change="::vm.save()"
-                          msd-elastic></textarea>
-            </div>
-        </form>
+        <div class="margin" [innerHTML]="note.text | marked"></div>
     </section>
-</div>
+
+    <section *ngIf="note && isEditing">
+        <header class="flex padding-h">
+            <button class="header-button" (click)="isEditing = !isEditing; save()">View</button>
+            <span class="tab">Edit</span>
+        </header>
+        <button class="btn btn-default margin" *ngIf="!isDeleting" (click)="delete()">Delete this Note</button>
+        <button class="btn btn-default margin" *ngIf="isDeleting">Deleting Note <app-spinner></app-spinner></button>
+        <hr>
+        <div class="tag-input">
+            <input type="text"
+                class="tags transparent"
+                placeholder="tags"
+                [(value)]="tags"
+                (valueChange)="tagsChanged(); isDirty = true"
+                [debounce]="2000">
+            <div><span class="badge" *ngFor="let tag of note.tags">{{tag}}</span></div>
+        </div>
+        <hr class="dashed">
+        <textarea [(value)]="note.text" (valueChange)="isDirty = true" [debounce]="2000" autosize></textarea>
+    </section>
+
+    <div class="sm text-center" style="color:#f5f5f5;" *ngIf="!note && !isLoading">
+        <h1>404</h1>
+        <span>~(=^..^)</span>
+    </div>
+</main>

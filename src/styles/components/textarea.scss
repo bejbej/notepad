@@ -1,0 +1,13 @@
+textarea {
+    min-height: 100px;
+    resize: none;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    
+    @include formElement();
+
+    &:disabled {
+        background-color: transparent;
+    }
+}

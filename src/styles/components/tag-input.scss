@@ -1,0 +1,31 @@
+.tags {
+    height: 40px;
+
+    >* {
+        margin-top: 11px;
+        margin-bottom: 10px;
+        margin-left: 11px;
+    }
+}
+
+.tag-input {
+    position: relative;
+
+    >input:focus~div {
+        display: none;
+    }
+
+    >div {
+        position: absolute;
+        top: 0;
+        pointer-events: none;
+        width:100%;
+        background-color: white;
+        overflow-x: hidden;
+        white-space: nowrap;
+
+        >span {
+            margin: 11px 0 11px 11px;
+        }
+    }
+}

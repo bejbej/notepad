@@ -1,22 +1,15 @@
-<!DOCTYPE html>
-<html ng-app="app">
-
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
     <meta name="theme-color" content="#4B334B" />
-    <title>Notes</title>
-    <!-- inject:css -->
-    <!-- endinject -->
+    <title>Notepad</title>
+    <base href="./">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
 </head>
-
 <body>
-    <main class="{{pageSize}}">
-        <ng-view></ng-view>
-    </main>
-
-    <!-- inject:js -->
-    <!-- endinject -->
+    <app-root></app-root>
+    <script src="https://bejbej.github.io/mtgcards/scripts/cards.js"></script>
 </body>
-
 </html>

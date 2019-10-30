@@ -1,11 +1,9 @@
 $screen-xs: 0px;
 $screen-sm: 480px;
 $screen-md: 768px;
-$screen-lg: 992px;
-$grid-gutter-width: 0px;
-$list-group-border-radius: 0px;
-$icon-font-path: "../fonts/";
-$text-color: #333;
+$screen-lg: 1200px;
+$text-color: black;
+$btn-border-radius-base: 0px;
 
 // Core variables and mixins
 @import "bootstrap/mixins";
@@ -22,7 +20,7 @@ $text-color: #333;
 //@import "bootstrap/code";
 //@import "bootstrap/grid";
 //@import "bootstrap/tables";
-@import "bootstrap/forms";
+//@import "bootstrap/forms";
 @import "bootstrap/buttons";
 
 // Components
@@ -30,19 +28,19 @@ $text-color: #333;
 //@import "bootstrap/dropdowns";
 //@import "bootstrap/button-groups";
 //@import "bootstrap/input-groups";
-@import "bootstrap/navs";
+//@import "bootstrap/navs";
 //@import "bootstrap/navbar";
 //@import "bootstrap/breadcrumbs";
 //@import "bootstrap/pagination";
 //@import "bootstrap/pager";
 //@import "bootstrap/labels";
-@import "bootstrap/badges";
+//@import "bootstrap/badges";
 //@import "bootstrap/jumbotron";
 //@import "bootstrap/thumbnails";
 //@import "bootstrap/alerts";
 //@import "bootstrap/progress-bars";
 //@import "bootstrap/media";
-// @import "bootstrap/list-group";
+//@import "bootstrap/list-group";
 //@import "bootstrap/panels";
 //@import "bootstrap/responsive-embed";
 //@import "bootstrap/wells";
