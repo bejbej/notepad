@@ -2,6 +2,7 @@ export * from "./config";
 
 // Common
 export * from "./common/cancellable";
+export * from "./common/throttle";
 
 // Directives
 export * from "./directives/allow-tabs.directive";
