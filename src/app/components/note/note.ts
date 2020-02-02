@@ -90,6 +90,10 @@ export class NoteComponent implements OnInit, OnDestroy {
             return;
         }
 
+        if (!this.note.id) {
+            this.note.owners = [authUser.id];
+        }
+
         this.isSaving = true;
         try {
             if (this.note.id) {
